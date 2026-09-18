@@ -2,6 +2,16 @@
 <html>
 <head>
 
+    <style>
+
+    #connection {
+        position: absolute;
+        top: 70%;
+        left: 48%;
+    }
+
+    </style>
+
 
 
 </head>
@@ -9,8 +19,8 @@
 
 <input id="entreeidentifiant" type="text">
 <input id="entreemotdepasse" type="password">
-<button id="connection">Se connecter</button>
-<button id="creeruncompte">Créer mon compte</button>
+<button id="connection" onclick="connection()">Se connecter</button>
+<button id="creeruncompte" onclick="creeruncompte()">Créer mon compte</button>
 
 <script>
 
@@ -19,6 +29,13 @@ const db = window.supabase.createClient(
     "sb_publishable_RhLg04cScEIdIlD46kTi0Q_Cpir8sd5"
 );
 
+function connection() {
+    console.log("Successfully executed");
+}
+
+function creeruncompte() {
+    console.log("Successfully executed");
+}
 
 </script>
 
