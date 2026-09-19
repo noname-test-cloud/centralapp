@@ -104,12 +104,27 @@ async function creeruncompte() {
 
     const { data, error } = await db
         .from("serveur")
-        .select("*");
+        .select("etatcompte1")
+        .eq("id", 1);
 
-    console.log("data =", data);
-    console.log("error =", error);
-}
-    
+    if (error) {
+        console.log("Erreur :", error);
+        return;
+    }
+
+    if (data.length === 0) {
+        console.log("Aucune ligne trouvée");
+        return;
+    }
+
+    centraldonnee = data[0].etatcompte1;
+
+    console.log("centraldonnee =", centraldonnee);
+
+    if (centraldonnee == "libre") {
+        console.log("Le compte 1 est libre !");
+    }
+}    
 </script>
 
 </body>
