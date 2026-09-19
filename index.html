@@ -99,21 +99,17 @@ function connection() {
 }
 
 async function creeruncompte() {
+    
+    console.log("Début de la requête");
 
     const { data, error } = await db
         .from("serveur")
-        .select("etatcompte1")
-        .eq("id", 1);
+        .select("*");
 
-    if (error) {
-        console.log("Erreur :", error);
-    } else {
-        centraldonnee = data[0].etatcompte1;
-        console.log(centraldonnee);
-    }
-    console.log(centraldonnee);
+    console.log("data =", data);
+    console.log("error =", error);
 }
-
+    
 </script>
 
 </body>
