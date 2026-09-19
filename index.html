@@ -93,14 +93,17 @@ document.getElementById("creeruncomptetext").style.display = "none";
 document.getElementById("connection").style.display = "none";
 
 let centraldonnee = "none";
+let identifiantentree = "none";
+let motdepasseentree = "none";
 
 function connection() {
-    console.log("Successfully executed");
+    console.log("Error");
 }
 
 async function creeruncompte() {
-    
-    console.log("Début de la requête");
+ 
+    identifiantentree = document.getElementById("entreeidentifiant").value;
+    motdepasseentree = document.getElementById("entreemotdepasse").value;
 
     const { data, error } = await db
         .from("serveur")
@@ -113,16 +116,25 @@ async function creeruncompte() {
     }
 
     if (data.length === 0) {
-        console.log("Aucune ligne trouvée");
         return;
     }
 
     centraldonnee = data[0].etatcompte1;
 
-    console.log("centraldonnee =", centraldonnee);
-
     if (centraldonnee == "libre") {
-        console.log("Le compte 1 est libre !");
+        const { data, error } = await db
+        .from("serveur")
+        .update({
+            etatcompte1: "nolibre",
+            identifiantcompte1: identifiantentree,
+            motdepassecompte1: motdepasseentree
+        })
+        .eq("id", 1)
+        .select();
+
+        if (error) {
+            console.log("Erreur :", error);
+        }
     }
 }    
 </script>
