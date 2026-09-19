@@ -104,8 +104,7 @@ async function creeruncompte() {
  
     identifiantentree = document.getElementById("entreeidentifiant").value;
     motdepasseentree = document.getElementById("entreemotdepasse").value;
-
-    console.log("operation terminee : FUNCTION creercompte OK");
+    
     const { data, error } = await db
         .from("serveur")
         .select("etatcompte1")
@@ -130,7 +129,6 @@ async function creeruncompte() {
             identifiantcompte1: identifiantentree,
             motdepassecompte1: motdepasseentree
         })
-        console.log("operation terminee : DATA update OK");
         .eq("id", 1)
         .select();
 
